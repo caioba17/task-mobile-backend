@@ -1,18 +1,18 @@
 import sqlite3 from "sqlite3";
+import path from "path";
 
 const SQlite = sqlite3.verbose();
 
-const db = new SQlite.Database(
-  "./src/database/banco_tasks.db",
-  SQlite.OPEN_READWRITE,
-  (err) => {
-    if (err) {
-      return console.log("Database error: " + err.message);
-    } else {
-      return console.log("Database connected");
-    }
+const dbPath = path.resolve("./src/database/banco_tasks.db");
+console.log("Database path:", dbPath); // Para verificar se o caminho é resolvido corretamente
+
+const db = new SQlite.Database(dbPath, SQlite.OPEN_READWRITE, (err) => {
+  if (err) {
+    console.log("Database error: " + err.message);
+  } else {
+    console.log("Database connected");
   }
-);
+});
 
 function execute(command, params, method = "all") {
   return new Promise((resolve, reject) => {
