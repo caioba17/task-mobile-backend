@@ -3,8 +3,9 @@ import path from "path";
 
 const SQlite = sqlite3.verbose();
 
-const dbPath = path.resolve("./src/database/banco_tasks.db");
-console.log("Database path:", dbPath); // Para verificar se o caminho é resolvido corretamente
+const dbPath = path.resolve(
+  "/home/ubuntu/task-mobile-api/src/database/banco_tasks.db"
+);
 
 const db = new SQlite.Database(dbPath, SQlite.OPEN_READWRITE, (err) => {
   if (err) {
